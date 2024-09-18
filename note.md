@@ -1,6 +1,6 @@
 ## Fund Me
 
-## VALUE Field
+## Sending ETH
 
 in Deploy and run transactions section in REMIX there is an input calls "**value**", that reperesent how much ethereum we are going to be sending at our transactions.
 
@@ -82,3 +82,45 @@ contract FundMe {
     }
 }
 ```
+
+## ChainLink And Oracle
+
+msg.value is in ETH but we want to send a value in "USD" unit. how to convert it?
+
+There is where chainlink and oracle come into play.
+
+### Blockchain Oracle
+
+Blockchain oracles are entities that connect blockchains to external systems, thereby enabling smart contracts to execute based upon inputs and outputs from the real world. [learn more](https://chain.link/education/blockchain-oracles)
+
+Any device that interfacts with the off-chian world to provide external data or computation to smart contracts.
+
+### The Blockchain Oracle Problem
+
+The blockchain oracle problem refers to the inability of blockchains to access external data, making them isolated networks, akin to a computer with no Internet connection. Bridging the connection between the blockchain (onchain) and the outside world (offchain) requires an additional piece of infrastructure—an oracle. [learn more](https://chain.link/education-hub/oracle-problem)
+
+1. Smart contracts are unable to connect with external systems, data feeds, APIs, existing payment systems or any other off-chain resources on their own.
+2. Centralized Oracles are a Point of Failure
+
+### ChainLink
+
+it is a decentralized oracle network to bring data and external computation into our smart contracts. which drives to hybrid smart contracts.
+
+chianlink is a modular, decennterlized oracle network that can be customized to deliver any data or do any exernal computation that you like. [learn more](https://chain.link/)
+
+### ChainLink Data Feeds
+
+a network of chainlink nodes get data from diffrent exchanges and data providers and bring that data throght decentralized chainlink nodes. the chainlink nodes use median to figure out what the actual price of the asset is and deliver that in a single transaction to what's called a reference contract on chain that smart contracts use that pricing information to power their DEFI application. [learn more](https://docs.chain.link/data-feeds/using-data-feeds)
+
+### ChainLink Features
+
+1. chianlink data feeds
+2. chainlink VRF (verifiable randomness function) [learn more](https://docs.chain.link/vrf)
+3. chainlink keeper [learn more](https://docs.chain.link/chainlink-automation)
+4. end-to-end reliability [learn more](https://docs.chain.link/any-api/get-request/introduction) [learn much more](https://docs.chain.link/any-api/introduction)
+
+#### Other links
+
+[Importing Tokens into your Metamask](https://consensys.io/blog/how-to-add-your-custom-tokens-in-metamask)
+
+[Request and Receive Chainlink Model](https://docs.chain.link/architecture-overview/architecture-request-model)

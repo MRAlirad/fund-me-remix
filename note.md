@@ -75,9 +75,9 @@ contract FundMe {
     uint256 public number = 0;
 
     function fundMe() public payable {
-        number = 10; // you spend some gas for the computation, not reverting yer
+        number = 10; // you spend some gas for the computation, not reverting yet
         require(msg.value > 1e18, "Didn't send enough");
-        number = 20; // you do not spend gas forthe coputation, it is reverted
+        number = 20; // you do not spend gas for the coputation, it is reverted
         // after the reverting the value of number variable is 0
     }
 }
@@ -124,3 +124,7 @@ a network of chainlink nodes get data from diffrent exchanges and data providers
 [Importing Tokens into your Metamask](https://consensys.io/blog/how-to-add-your-custom-tokens-in-metamask)
 
 [Request and Receive Chainlink Model](https://docs.chain.link/architecture-overview/architecture-request-model)
+
+## Interface
+
+You can interact with other contracts by declaring an Interface. [learn more](https://solidity-by-example.org/interface/)

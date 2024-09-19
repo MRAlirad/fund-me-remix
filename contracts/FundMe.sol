@@ -5,23 +5,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.8;
 
-// get interface from "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"
-interface AggregatorV3Interface {
-    function decimals() external view returns (uint8);
+// import interface from "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol" 
 
-    function description() external view returns (string memory);
-
-    function version() external view returns (uint256);
-
-    function getRoundData(
-        uint80 _roundId
-    ) external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
-
-    function latestRoundData()
-        external
-        view
-        returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
-}
+import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
 contract FundMe {
 
@@ -33,9 +19,7 @@ contract FundMe {
         // we have to convert msg.value to usd equivalent in order to figure out if it is greate thant minimumUsd
         require(msg.value >= minimumUsd, "Didn't send enough");
     }
-    
 
-    
     // get the price of ethereum
     function getPrice() public {
         // we need to use chain link data feeds
@@ -44,7 +28,7 @@ contract FundMe {
         // 2. Address of the contract =>  get from "https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1#sepolia-testnet"
         // address 0x694AA1769357215DE4FAC081bf1f309aDC325306
     }
-    
+
     function getVersion() public view returns (uint256) {
         AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306); // contract address of ethereum => usd
         return priceFeed.version();

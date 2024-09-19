@@ -125,6 +125,14 @@ a network of chainlink nodes get data from diffrent exchanges and data providers
 
 [Request and Receive Chainlink Model](https://docs.chain.link/architecture-overview/architecture-request-model)
 
-## Interface
+## Interfaces & Price Feeds
 
 You can interact with other contracts by declaring an Interface. [learn more](https://solidity-by-example.org/interface/)
+
+## Importing from GitHub & NPM
+
+[chainlink github](https://github.com/smartcontractkit/chainlink)
+
+[chainlink npm](https://www.npmjs.com/package/@chainlink/contracts)
+
+[AggregatorV3Interface](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol)

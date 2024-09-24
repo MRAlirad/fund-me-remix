@@ -136,3 +136,5 @@ You can interact with other contracts by declaring an Interface. [learn more](ht
 [chainlink npm](https://www.npmjs.com/package/@chainlink/contracts)
 
 [AggregatorV3Interface](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol)
+
+## Floating Point Math in Solidity

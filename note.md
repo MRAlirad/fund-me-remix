@@ -138,3 +138,9 @@ You can interact with other contracts by declaring an Interface. [learn more](ht
 [AggregatorV3Interface](https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol)
 
 ## Floating Point Math in Solidity
+
+[tuple](https://docs.soliditylang.org/en/latest/abi-spec.html#handling-tuple-types)
+
+[Floating Point Numbers in Solidity](https://stackoverflow.com/questions/58277234/does-solidity-supports-floating-point-number)
+
+[Type Casting](https://ethereum.stackexchange.com/questions/6891/type-casting-in-solidity)

@@ -10,15 +10,21 @@ pragma solidity ^0.8.8;
 import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
 contract FundMe {
-
     uint256 public minimumUsd = 50;
+
+    // we want to keep track of all the people who send us money
+    address[] public funders;
+    mapping (address => uint256) public addressToAmountFunded;
 
     function fundMe() public payable {
         // Want to be able to set a minimum fund amount in USD
         // 1. How do we send ETH to this contract
         // we have to convert msg.value to usd equivalent in order to figure out if it is greate thant minimumUsd
         require(getConversionRate(msg.value) >= minimumUsd, "Didn't send enough");
-        // msg.value has 18 decimal 
+        // msg.value has 18 decimal.
+
+        funders.push(msg.sender);
+        addressToAmountFunded[msg.sender] = msg.value;
     }
 
     // get the price of ethereum

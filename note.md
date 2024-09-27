@@ -144,3 +144,5 @@ You can interact with other contracts by declaring an Interface. [learn more](ht
 [Floating Point Numbers in Solidity](https://stackoverflow.com/questions/58277234/does-solidity-supports-floating-point-number)
 
 [Type Casting](https://ethereum.stackexchange.com/questions/6891/type-casting-in-solidity)
+
+## Basic Solidity: Arrays & Structs II

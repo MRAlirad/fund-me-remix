@@ -170,3 +170,29 @@ all the functions in library must be internal.
 ### Using For
 
 The directive using A for B; can be used to attach functions (A) as member functions to any type (B). These functions will receive the object they are called on as their first parameter (like the self variable in Python). [learn more](https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=using#using-for)
+
+## SafeMath, Overflow Checking, and the "unchecked" keyword
+
+in earlier version of solidity if a number reaches the max of its value, if you add to it it will restart.
+
+```js
+    uint8 public bigNumber = 255 // the max number of uint8 is 255
+
+    function add() public {
+        bigNumber += 1; // it will restart from 0
+    }
+```
+
+but if you try it in newer version it will give you an error.
+
+to still restrart the code you need to use the "unchecked" keyword
+
+```js
+        uint8 public bigNumber = 255
+
+    function add() public {
+        unchecked {bigNumber += 1}; // it will restart from 0
+    }
+```
+
+[Checked or Unchecked Arithmetic](https://docs.soliditylang.org/en/latest/control-structures.html#checked-or-unchecked-arithmetic)

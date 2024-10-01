@@ -34,7 +34,7 @@ contract FundMe {
         addressToAmountFunded[msg.sender] = msg.value;
     }
 
-    function withdraw() public {
+    function withdraw() public onlyOwner { 
         for(uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
@@ -46,5 +46,10 @@ contract FundMe {
         // send eth
         (bool callSuccess, bytes memory data) = payable(msg.sender).call{value: address(this)}("");
         require(callSuccess, 'Call Fails');
+    }
+
+    modifier onlyOwner {
+        require(msg.sender == owner. "Sender is not the owner!"); // only the owner of the contract can withdraw
+        _;
     }
 }

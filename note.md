@@ -216,3 +216,11 @@ a way to loop throgh some type of index object or some range of numbers or just 
         }
     }
 ```
+
+## Resetting an Array
+
+you can reset an array using the below code
+
+``` js
+    arrayName = new address[](0)
+```

@@ -10,7 +10,7 @@ import "./PriceConvertor.sol";
 contract FundMe {
     using PriceConvertor for uint256;
 
-    uint256 public minimumUsd = 50;
+    uint256 public minimumUsd = 50 * 1e18
 
     // we want to keep track of all the people who send us money
     address[] public funders;
@@ -44,12 +44,12 @@ contract FundMe {
         funders = new address[](0);
 
         // send eth
-        (bool callSuccess, bytes memory data) = payable(msg.sender).call{value: address(this)}("");
+        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess, 'Call Fails');
     }
 
     modifier onlyOwner {
-        require(msg.sender == owner. "Sender is not the owner!"); // only the owner of the contract can withdraw
+        require(msg.sender == owner, "Sender is not the owner!"); // only the owner of the contract can withdraw
         _;
     }
 }

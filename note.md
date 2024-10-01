@@ -247,7 +247,7 @@ payable(msg.sender).transfer(address(this).balance); // returns an error and rev
 3. call
 
 ```js
-    (bool callSuccess, bytes memory data) = payable(msg.sender).call{value: address(this)}(""); // returns bool and data if fails
+    (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");; // returns bool and data if fails
     require(callSuccess, 'Call Fails');
 ```
 

@@ -188,7 +188,7 @@ but if you try it in newer version it will give you an error.
 to still restrart the code you need to use the "unchecked" keyword
 
 ```js
-        uint8 public bigNumber = 255
+    uint8 public bigNumber = 255
 
     function add() public {
         unchecked {bigNumber += 1}; // it will restart from 0
@@ -196,3 +196,23 @@ to still restrart the code you need to use the "unchecked" keyword
 ```
 
 [Checked or Unchecked Arithmetic](https://docs.soliditylang.org/en/latest/control-structures.html#checked-or-unchecked-arithmetic)
+
+[Math Library](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/Math.sol)
+
+## For loop
+
+a way to loop throgh some type of index object or some range of numbers or just do a task a certain amount of times repeating. [learn more](https://solidity-by-example.org/loop/)
+
+```js
+    // starting index, ending index, step amount
+    for (uint256 i = 0; i < 10; i++) {
+        if (i == 3) {
+            // Skip to next iteration with continue
+            continue;
+        }
+        if (i == 5) {
+            // Exit loop with break
+            break;
+        }
+    }
+```

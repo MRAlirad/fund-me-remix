@@ -33,7 +33,12 @@ contract FundMe {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
         }
+
         // reset the array
         funders = new address[](0);
+
+        // send eth
+        (bool callSuccess, bytes memory data) = payable(msg.sender).call{value: address(this)}("");
+        require(callSuccess, 'Call Fails');
     }
 }

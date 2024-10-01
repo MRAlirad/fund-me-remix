@@ -221,6 +221,34 @@ a way to loop throgh some type of index object or some range of numbers or just 
 
 you can reset an array using the below code
 
-``` js
-    arrayName = new address[](0)
+```js
+    arrayName = new address[](0);
 ```
+
+## Sending ETH from a Contract
+
+There are 3 ways to send eth. [learn more](https://solidity-by-example.org/sending-ether/)
+
+1. transfer
+
+```js
+// msg.sender => address
+// payable(msg.sender) => payable address
+payable(msg.sender).transfer(address(this).balance); // returns an error and revert if fails
+```
+
+2. send
+
+```js
+    bool sendSuccess = payable(msg.sender).send(address(this).balance); //returns a bool if fails
+    require(sendSuccess, 'Send Fails');
+```
+
+3. call
+
+```js
+    (bool callSuccess, bytes memory data) = payable(msg.sender).call{value: address(this)}(""); // returns bool and data if fails
+    require(callSuccess, 'Call Fails');
+```
+
+[learn more about this keyword](https://ethereum.stackexchange.com/questions/1781/what-is-the-this-keyword-in-solidity)

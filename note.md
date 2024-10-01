@@ -146,3 +146,27 @@ You can interact with other contracts by declaring an Interface. [learn more](ht
 [Type Casting](https://ethereum.stackexchange.com/questions/6891/type-casting-in-solidity)
 
 ## Basic Solidity: Arrays & Structs II
+
+## Library
+
+Libraries are similar to contracts, but you can't declare any state variable and you can't send ether.
+
+A library is embedded into the contract if all library functions are internal.
+
+Otherwise the library must be deployed and then linked before the contract is deployed.
+
+[learn more](https://solidity-by-example.org/library/)
+
+there is a **library** keyword that you can build a library with.
+
+```js
+    library PriceConvertor {
+
+    }
+```
+
+all the functions in library must be internal.
+
+### Using For
+
+The directive using A for B; can be used to attach functions (A) as member functions to any type (B). These functions will receive the object they are called on as their first parameter (like the self variable in Python). [learn more](https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=using#using-for)

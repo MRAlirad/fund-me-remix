@@ -232,9 +232,9 @@ There are 3 ways to send eth. [learn more](https://solidity-by-example.org/sendi
 1. transfer
 
 ```js
-// msg.sender => address
-// payable(msg.sender) => payable address
-payable(msg.sender).transfer(address(this).balance); // returns an error and revert if fails
+    // msg.sender => address
+    // payable(msg.sender) => payable address
+    payable(msg.sender).transfer(address(this).balance); // returns an error and revert if fails
 ```
 
 2. send
@@ -252,3 +252,8 @@ payable(msg.sender).transfer(address(this).balance); // returns an error and rev
 ```
 
 [learn more about this keyword](https://ethereum.stackexchange.com/questions/1781/what-is-the-this-keyword-in-solidity)
+
+
+## Constructor
+
+A constructor is an optional function that is executed upon contract creation. [learn more](https://solidity-by-example.org/constructor/)

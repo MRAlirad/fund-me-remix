@@ -7,6 +7,8 @@ pragma solidity ^0.8.8;
 
 import "./PriceConvertor.sol";
 
+error NotOwner();
+
 contract FundMe {
     using PriceConvertor for uint256;
 
@@ -49,7 +51,11 @@ contract FundMe {
     }
 
     modifier onlyOwner {
-        require(msg.sender == i_owner, "Sender is not the owner!"); // only the owner of the contract can withdraw
+        // only the owner of the contract can withdraw
+        // require(msg.sender == i_owner, "Sender is not the owner!");
+
+        // more gas efficient way
+        if(msg.sender != i_owner) revert NotOwner()
         _;
     }
 }

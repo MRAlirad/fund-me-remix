@@ -294,7 +294,7 @@ contract Constants {
 
 ## Immutable
 
-Immutable variables are like constants. Values of immutable variables can be set inside the constructor but cannot be modified afterwards..
+Immutable variables are like constants. Values of immutable variables can be set inside the constructor but cannot be modified afterwards. [learn more](https://solidity-by-example.org/immutable/)
 
 ```js
 contract Immutable {
@@ -306,5 +306,24 @@ contract Immutable {
         MY_ADDRESS = msg.sender;
         MY_UINT = _myUint;
     }
+}
+```
+
+## Custom Errors
+
+Custom errors are defined using the **error** statement, which can be used inside and outside of contracts (including interfaces and libraries).
+
+```js
+error Unauthorized();
+
+contract VendingMachine {
+    address payable owner = payable(msg.sender);
+
+    function withdraw() public {
+        if (msg.sender != owner) revert Unauthorized();
+
+        owner.transfer(address(this).balance);
+    }
+    // ...
 }
 ```

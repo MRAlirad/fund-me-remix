@@ -10,16 +10,16 @@ import "./PriceConvertor.sol";
 contract FundMe {
     using PriceConvertor for uint256;
 
-    uint256 public minimumUsd = 50 * 1e18
+    uint256 public constant MINIMUM_USD = 50 * 1e18
 
     // we want to keep track of all the people who send us money
     address[] public funders;
     mapping (address => uint256) public addressToAmountFunded;
 
-    address public owner;
+    address public i_owner;
 
     constructor(){
-        owner = msg.sender; // owner is however deployed the contract
+        i_owner = msg.sender; // owner is however deployed the contract
     }
 
     function fundMe() public payable {
@@ -27,7 +27,7 @@ contract FundMe {
         // 1. How do we send ETH to this contract
         // we have to convert msg.value to usd equivalent in order to figure out if it is greate thant minimumUsd
         // require(getConversionRate(msg.value) >= minimumUsd, "Didn't send enough");
-        require(msg.value.getConversionRate() >= minimumUsd, "Didn't send enough"); // msg.value acts like the first parameter of getConversionRate mehtod
+        require(msg.value.getConversionRate() >= MINIMUM_USD, "Didn't send enough"); // msg.value acts like the first parameter of getConversionRate mehtod
         // msg.value has 18 decimal.
 
         funders.push(msg.sender);
@@ -49,7 +49,7 @@ contract FundMe {
     }
 
     modifier onlyOwner {
-        require(msg.sender == owner, "Sender is not the owner!"); // only the owner of the contract can withdraw
+        require(msg.sender == i_owner, "Sender is not the owner!"); // only the owner of the contract can withdraw
         _;
     }
 }

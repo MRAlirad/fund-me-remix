@@ -277,3 +277,34 @@ Modifiers can be used to:
         owner = _newOwner;
     }
 ```
+
+## Constant
+
+Constants are variables that cannot be modified. Their value is hard coded and using constants can save gas cost. [learn more](https://solidity-by-example.org/constants/)
+
+better to use upercase for constant variables.
+
+```js
+contract Constants {
+    // coding convention to uppercase constant variables
+    address public constant MY_ADDRESS = 0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
+    uint256 public constant MY_UINT = 123;
+}
+```
+
+## Immutable
+
+Immutable variables are like constants. Values of immutable variables can be set inside the constructor but cannot be modified afterwards..
+
+```js
+contract Immutable {
+    // coding convention to uppercase constant variables
+    address public immutable MY_ADDRESS;
+    uint256 public immutable MY_UINT;
+
+    constructor(uint256 _myUint) {
+        MY_ADDRESS = msg.sender;
+        MY_UINT = _myUint;
+    }
+}
+```

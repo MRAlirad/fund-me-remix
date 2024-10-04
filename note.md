@@ -311,7 +311,7 @@ contract Immutable {
 
 ## Custom Errors
 
-Custom errors are defined using the **error** statement, which can be used inside and outside of contracts (including interfaces and libraries).
+Custom errors are defined using the **error** statement, which can be used inside and outside of contracts (including interfaces and libraries). [learn more](https://soliditylang.org/blog/2021/04/21/custom-errors/)
 
 ```js
 error Unauthorized();
@@ -324,6 +324,25 @@ contract VendingMachine {
 
         owner.transfer(address(this).balance);
     }
-    // ...
 }
+```
+
+## Receive and Fullback functions
+
+1. Receive functions => The receive function is executed on a call to the contract with empty calldata. This is the function that is executed on plain Ether transfers (e.g. via .send() or .transfer()). If no such function exists, but a payable fallback function exists, the fallback function will be called on a plain Ether transfer. If neither a receive Ether nor a payable fallback function is present, the contract cannot receive Ether through a transaction that does not represent a payable function call and throws an exception. [learn more](https://docs.soliditylang.org/en/latest/contracts.html#receive-ether-function)
+
+2. Fallback function => The fallback function is executed on a call to the contract if none of the other functions match the given function signature, or if no data was supplied at all and there is no receive Ether function. The fallback function always receives data, but in order to also receive Ether it must be marked payable. [learn more](https://docs.soliditylang.org/en/latest/contracts.html#fallback-function)
+
+```
+    Explainer from: https://solidity-by-example.org/fallback/
+    Ether is sent to contract
+         is msg.data empty?
+             /   \
+            yes  no
+            /     \
+       receive()?  fallback()
+        /   \
+      yes   no
+     /        \
+   receive()  fallback()
 ```

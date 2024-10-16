@@ -12,7 +12,7 @@ error NotOwner();
 contract FundMe {
     using PriceConvertor for uint256;
 
-    uint256 public constant MINIMUM_USD = 50 * 1e18
+    uint256 public constant MINIMUM_USD = 50 * 1e18;
 
     // we want to keep track of all the people who send us money
     address[] public funders;
@@ -24,7 +24,7 @@ contract FundMe {
         i_owner = msg.sender; // owner is however deployed the contract
     }
 
-    function fundMe() public payable {
+    function fund() public payable {
         // Want to be able to set a minimum fund amount in USD
         // 1. How do we send ETH to this contract
         // we have to convert msg.value to usd equivalent in order to figure out if it is greate thant minimumUsd
@@ -55,7 +55,7 @@ contract FundMe {
         // require(msg.sender == i_owner, "Sender is not the owner!");
 
         // more gas efficient way
-        if(msg.sender != i_owner) revert NotOwner()
+        if(msg.sender != i_owner) revert NotOwner();
         _;
     }
 

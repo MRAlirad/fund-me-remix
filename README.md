@@ -689,6 +689,17 @@ To illustrate the code snippet, we start from `funderIndex` 0. When entering the
 
 In this lesson, we learned how to implement the `withdraw` function to manage accumulated funds and reset mappings using a `for loop`. This process ensures efficient handling of funders' records.
 
+## Resetting an Array
+
+The simplest way to reset the `funders` array is similar to the method used with the mapping: iterate through all its elements and reset each one to 0. Alternatively, we can create a brand new `funders` array.
+
+```js
+funders = new address[]();
+```
+
+> 🗒️ **NOTE**:br
+> You might recall using the `new` keyword when deploying a contract. In this context, however, it resets the `funders` array to a zero-sized, blank address array.
+
 # old
 
 <!--

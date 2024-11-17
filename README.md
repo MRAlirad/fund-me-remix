@@ -364,8 +364,8 @@ Our `getLatestPrice()` function now retrieves the latest ETH price in USD from t
 
 ### Decimals
 
-* `msg.value` is a `uint256` value with 18 decimal places.
-* `answer` is an `int256` value with 8 decimal places (USD-based pairs use 8 decimal places, while ETH-based pairs use 18 decimal places).
+-   `msg.value` is a `uint256` value with 18 decimal places.
+-   `answer` is an `int256` value with 8 decimal places (USD-based pairs use 8 decimal places, while ETH-based pairs use 18 decimal places).
 
 This means the `price` returned from our `latestRoundData` function isn't directly compatible with `msg.value`. To match the decimal places, we multiply `price` by 1e10:
 
@@ -423,10 +423,10 @@ function getConversionRate(uint256 ethAmount) internal view returns (uint256) {
 
 ### Example of `getConversionRate`
 
-* `ethAmount` is set at 1 ETH, with 1e18 precision.
-* `ethPrice` is set at 2000 USD, with 1e18 precision, resulting in 2000e18.
-* `ethPrice * ethAmount` results in 2000e36.
-* To scale down `ethAmountInUsd` to 1e18 precision, divide `ethPrice * ethAmount` by 1e18.
+-   `ethAmount` is set at 1 ETH, with 1e18 precision.
+-   `ethPrice` is set at 2000 USD, with 1e18 precision, resulting in 2000e18.
+-   `ethPrice * ethAmount` results in 2000e36.
+-   To scale down `ethAmountInUsd` to 1e18 precision, divide `ethPrice * ethAmount` by 1e18.
 
 ### Checking Minimum USD Value
 
@@ -450,9 +450,44 @@ Gas estimation failed. Error execution reverted, didn't send enough ETH.
 
 In this lesson, we've demonstrated how to convert ETH to USD using the `getConversionRate` function, ensuring precise calculations by handling decimal places correctly.
 
+## Msg Sender
 
+In this lesson, we will learn how to track addresses that are funding the contract and the amounts they will send to it.
 
+### Tracking Funders
 
+To track the addresses are sending money to the contract, we can create an array of addresses named `funders`:
+
+```js
+address[] public funders;
+```
+
+Whenever someone sends money to the contract, we will add their address to the array with the `push` function:
+
+```js
+funders.push(msg.sender);
+```
+
+The `msg.sender` global variable refers to the address that **initiates the transaction**.
+
+### Mapping Users to Funds Sent
+
+We can also map each funder's address to the amount they have sent using **mappings**. Let's define a mapping in Solidity:
+
+```js
+mapping(address => uint256) public addressToAmountFunded;
+mapping (address funder => uint256 amountFunded) public addressToAmountFunded;
+```
+
+The `addressToAmountFunded` mapping associates each funder's address with the total amount they have contributed. When a new amount is sent, we can add it to the user's total contribution:
+
+```js
+addressToAmountFunded[msg.sender] += msg.value;
+```
+
+### Conclusion
+
+We have successfully implemented a system to track users who fund the `fundMe` contract. This mechanism records every address that is sending ETH to the contract, and maps the sender's address to the total amount they have contributed.
 
 # old
 
